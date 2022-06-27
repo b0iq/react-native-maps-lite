@@ -12,7 +12,24 @@ const LINKING_ERROR =
   '- You are not using Expo managed workflow\n';
 
 type MapsLiteProps = {
-  color: string;
+  initialRegion?: {
+    latitude: number;
+    longitude: number;
+    zoomLevel: number;
+  };
+  showUserLocation?: boolean;
+  showCompass?: boolean;
+  onMapDidMove?: (event: {
+    nativeEvent: {
+      latitude: number;
+      longitude: number;
+      zoomLevel: number;
+      longitudeDelta: number;
+      latitudeDelta: number;
+    };
+  }) => void;
+  onMapWillMove?: () => void;
+  // Others
   style: ViewStyle;
 };
 

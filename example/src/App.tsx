@@ -1,12 +1,38 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
+import { Button, Dimensions, StyleSheet, View } from 'react-native';
 import { MapsLiteView } from 'react-native-maps-lite';
+const { width, height } = Dimensions.get('screen');
+const initialRegion = {
+  latitude: 25.2048,
+  longitude: 55.2708,
+  zoomLevel: 15,
+};
 
 export default function App() {
+  const [isMapShowed, setIsMapShowed] = React.useState(true);
   return (
     <View style={styles.container}>
-      <MapsLiteView color="#32a852" style={styles.box} />
+      <View style={styles.floatingButton}>
+        <Button
+          title="Toggle Maps"
+          onPress={() => setIsMapShowed((prev) => !prev)}
+        />
+      </View>
+      {isMapShowed && (
+        <MapsLiteView
+          onMapDidMove={(e) => {
+            console.log(e.nativeEvent);
+          }}
+          onMapWillMove={() => {
+            console.log('onMapWillMove');
+          }}
+          initialRegion={initialRegion}
+          showCompass={true}
+          showUserLocation={true}
+          style={styles.box}
+        />
+      )}
     </View>
   );
 }
@@ -17,9 +43,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  floatingButton: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    zIndex: 100,
+  },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width,
+    height,
   },
 });
