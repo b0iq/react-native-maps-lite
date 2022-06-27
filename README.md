@@ -11,11 +11,24 @@ npm install react-native-maps-lite
 ## Usage
 
 ```js
-import { MapsLiteView } from "react-native-maps-lite";
+import { MapsLiteView } from 'react-native-maps-lite';
 
-// ...
-
-<MapsLiteView color="tomato" />
+export default () => {
+  return (
+    <MapsLiteView
+      onMapDidMove={(e) => {
+        console.log(e.nativeEvent);
+      }}
+      onMapWillMove={() => {
+        console.log('onMapWillMove');
+      }}
+      initialRegion={initialRegion}
+      showCompass={true}
+      showUserLocation={true}
+      style={styles.box}
+    />
+  );
+};
 ```
 
 ## Contributing
