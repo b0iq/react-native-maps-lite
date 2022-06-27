@@ -34,7 +34,10 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "maps",
+    "google-maps",
+    "map-view"
   ],
   "repository": "https://github.com/b0iq/react-native-maps-lite",
   "author": "b0iq <contact@b0iq.com> (https://github.com/b0iq)",

@@ -1,3 +1,5 @@
+import UIKit
+
 @objc(MapsLiteViewManager)
 class MapsLiteViewManager: RCTViewManager {
 

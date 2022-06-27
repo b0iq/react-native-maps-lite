@@ -6,7 +6,7 @@ import { MapsLiteView } from 'react-native-maps-lite';
 export default function App() {
   return (
     <View style={styles.container}>
-      <MapsLiteViewManager color="#32a852" style={styles.box} />
+      <MapsLiteView color="#32a852" style={styles.box} />
     </View>
   );
 }
